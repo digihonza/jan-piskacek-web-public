@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<id>/</id>
+	<title />
+	<link rel="self" href="/" />
+	<rights>Copyright © 2022</rights>
+	<updated>2022-10-09T12:13:44Z</updated>
+	<entry>
+		<id>/posts/test</id>
+		<title>My First Statiq page HAHA</title>
+		<link href="/posts/test" />
+		<link rel="enclosure" type="image" href="https://upload.wikimedia.org/wikipedia/commons/6/6e/Monasterio_Khor_Virap%252C_Armenia%252C_2016-10-01%252C_DD_25.jpg" />
+		<updated>2020-09-03T00:00:00Z</updated>
+		<content>&lt;h1 id="hello-world"&gt;Hello World!&lt;/h1&gt;
+&lt;p&gt;Hello from my first Statiq page. blah blah&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;Hello from my first Statiq page. blah blah&lt;/p&gt;</summary>
+	</entry>
+</feed>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title />
+		<link>/</link>
+		<description />
+		<copyright>Copyright © 2022</copyright>
+		<pubDate>Sun, 09 Oct 2022 12:13:44 GMT</pubDate>
+		<lastBuildDate>Sun, 09 Oct 2022 12:13:44 GMT</lastBuildDate>
+		<item>
+			<title>My First Statiq page HAHA</title>
+			<link>/posts/test</link>
+			<description>&lt;p&gt;Hello from my first Statiq page. blah blah&lt;/p&gt;</description>
+			<enclosure url="https://upload.wikimedia.org/wikipedia/commons/6/6e/Monasterio_Khor_Virap%252C_Armenia%252C_2016-10-01%252C_DD_25.jpg" length="0" type="image" />
+			<guid isPermaLink="false">/posts/test</guid>
+			<pubDate>Thu, 03 Sep 2020 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;h1 id="hello-world"&gt;Hello World!&lt;/h1&gt;
+&lt;p&gt;Hello from my first Statiq page. blah blah&lt;/p&gt;
+</content:encoded>
+			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
+		</item>
+	</channel>
+</rss>
