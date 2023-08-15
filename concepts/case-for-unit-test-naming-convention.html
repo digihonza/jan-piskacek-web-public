@@ -5,11 +5,10 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Full-Stack Web Developer">
 
-  <title>Jan Pisk&#xE1;&#x10D;ek - Hi! I am Jan.</title>
+  <title>Jan Pisk&#xE1;&#x10D;ek - A Case for Unit Test Naming Convetion</title>
 
-  <link rel="canonical" href='/'>
+  <link rel="canonical" href='/concepts/case-for-unit-test-naming-convention'>
 
       <link type="application/rss+xml" rel="alternate" href="/feed.rss" />
       <link type="application/atom+xml" rel="alternate" href="/feed.atom" />
@@ -18,9 +17,9 @@
   <meta name="msapplication-tooltip" content='Jan Pisk&#xE1;&#x10D;ek' />
   <meta name="msapplication-starturl" content='/' />
 
-  <meta property="og:title" content='Jan Pisk&#xE1;&#x10D;ek - Hi! I am Jan.' />
+  <meta property="og:title" content='Jan Pisk&#xE1;&#x10D;ek - A Case for Unit Test Naming Convetion' />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content='/' />
+  <meta property="og:url" content='/concepts/case-for-unit-test-naming-convention' />
 
   <link rel="icon" href='/favicon.ico'>
 
@@ -78,9 +77,8 @@
       <div class="col-md-12">
         <div class='site-heading'>
           <h1>
-            Hi! I am Jan.
+            A Case for Unit Test Naming Convetion
           </h1>
-            <span class="subheading">Full-Stack Web Developer</span>
         </div>
       </div>
     </div>
@@ -92,40 +90,37 @@
   <div class="container">
     <div class="row">
       <div id="content" class="col-md-12">
-        <div class="container-sm-height">
-  <div class="row row-sm-height">
-    <div class="col-md-6 right-border col-sm-height">
-      
-
-
-<div class="post-preview">
-  <h2 class="post-title"><a href="/posts/automapper-configuration-unit-test">How to Verify AutoMapper Configuration Using a Unit Test</a></h2>
-  <p class="post-meta">Published on Tuesday, 15 August 2023</p>
-<p><a href="https://automapper.org/">AutoMapper</a> is a popular library for simplifying object mapping in .NET applications. It requires some configuration to ensure that the mapping works as expected. Missing a property might lead to a runtime exception or incorrect data. To avoid these surprises, AutoMapper has a <a href="https://automapper.readthedocs.io/en/latest/Configuration-validation.html">useful method</a> for verifying your mapping configuration. It checks that all the properties and constructor parameters are mapped correctly, and throws an exception if there are any issues.</p>    <p class="small"><a href="/posts/automapper-configuration-unit-test">Read more...</a></p>
-</div>
-
-
-    </div>
-    <div class="col-md-4 mt-4 mt-md-0 col-sm-height sidebar">
-          <div>
-            <h5>Tags</h5>
-              <a href="/tags/quick-tip" class="badge text-bg-light"> Quick Tip (1)</a>
-              <a href="/tags/automapper" class="badge text-bg-light"> AutoMapper (1)</a>
-              <a href="/tags/net" class="badge text-bg-light"> .NET (1)</a>
-              <a href="/tags/unit-testing" class="badge text-bg-light"> Unit Testing (1)</a>
-            <div class="mt-3">
-              <div class="float-sm-end">
-                <a class="btn btn-sm btn-primary" href='/tags' role="button">All Tags <i class="fas fa-angle-double-right"></i></a>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-
-      
-
-    </div>
-  </div>
-</div>
+        <p>My recommended unit test naming convention is one specified in Microsoft Unit Test Guidelines (ADD LINK). It is made up of three parts:</p>
+<ol>
+<li>Name of member being tested</li>
+<li>Scenario under test</li>
+<li>Expected result</li>
+</ol>
+<p>For example:</p>
+<pre><code>MemberName_ScenarioUnderTest_ExpectedResult
+</code></pre>
+<p>For people new to unit testing who are used to conventions used for naming in production code, this may seem strange for at least two reasons:</p>
+<ol>
+<li>.NET method names shouldn't contain underscores</li>
+<li>It can get super long - Who wants to read that?</li>
+</ol>
+<p>I can relate to those feelings because there were times when I felt that way. It wasn't until I learned that this is a widely accepted convetion and started seeing its value that I changed my mind about it. So, let me review why I think it's worth following this standard.</p>
+<p>Although unit tests are methods, there are different objectives in naming production code methods and unit tests. Most methods in a production code are expected to be called/referenced from other places. That means that we'll have to type the method name (even if only partially - thank you IntelliSense - CHECK SPELLING) and later read it within its context as we our future selves or our coworkers try to make sense of our code. While our method names need to be descriptive, there is value in bravity. And afterall, it's generally easy to F12 in the method or add XML comments which can provide additional detail.</p>
+<p>Unit tests on the other hand aren't meant to be called directly by us, so we don't have to worry about having to type its name out. We read unit test names when reading through or maitaining our test suite or when a test fails. In those situations we value clarity. We want to know what is the intent of the test, does it check a specific edge case? Or does it just check a happy path? Is there a reason for the test value used? If we're looking at a failed test, what could have caused it to fail? Sure, we can debug through the test to find out, but it'd be nice to get an idea from the test name.</p>
+<p>Following a good unit test naming convention also enables your unit test suite to serve as documentation. Developers generally dislike writing documentation but this is code. Consider this example. Does it give you an idea of how the code under test is supposed to work?</p>
+<pre><code>Add bad example here
+</code></pre>
+<p>How about this one?</p>
+<pre><code>Good example here
+</code></pre>
+<p>Good unit test is supposed to focus on testing a single thing. This naming convention can help you stay focused. It's difficult to come up with a name following the defined pattern for a test that's too broad. What's exactly is the scenario under test? And what's the expected result? Once you find a good name, it will tell you what your assert statement should be. Are you asserting something else? Create another test for that keep this one focused on the expected result specified in the name.</p>
+<p>Following this naming convention may seem strange at first and at times hard to implement because naming is hard. However, if you give it a try, there is a good chance that you will start appreciating it like I have.</p>
+<ul>
+<li>Clarity</li>
+<li>Intent</li>
+<li>Documentation</li>
+</ul>
+<p><a href="https://www.google.com/">This is a link</a></p>
 
         
 

@@ -4,18 +4,38 @@
 		<title />
 		<link>/</link>
 		<description />
-		<copyright>Copyright © 2022</copyright>
-		<pubDate>Sun, 09 Oct 2022 15:56:32 GMT</pubDate>
-		<lastBuildDate>Sun, 09 Oct 2022 15:56:32 GMT</lastBuildDate>
+		<copyright>© 2023 Jan Piskáček</copyright>
+		<pubDate>Tue, 15 Aug 2023 16:04:04 GMT</pubDate>
+		<lastBuildDate>Tue, 15 Aug 2023 16:04:04 GMT</lastBuildDate>
 		<item>
-			<title>My First Statiq page HAHA</title>
-			<link>/posts/test</link>
-			<description>&lt;p&gt;Hello from my first Statiq page. blah blah&lt;/p&gt;</description>
-			<enclosure url="https://upload.wikimedia.org/wikipedia/commons/6/6e/Monasterio_Khor_Virap%252C_Armenia%252C_2016-10-01%252C_DD_25.jpg" length="0" type="image" />
-			<guid isPermaLink="false">/posts/test</guid>
-			<pubDate>Thu, 03 Sep 2020 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;h1 id="hello-world"&gt;Hello World!&lt;/h1&gt;
-&lt;p&gt;Hello from my first Statiq page. blah blah&lt;/p&gt;
+			<title>How to Verify AutoMapper Configuration Using a Unit Test</title>
+			<link>/posts/automapper-configuration-unit-test</link>
+			<description>&lt;p&gt;&lt;a href="https://automapper.org/"&gt;AutoMapper&lt;/a&gt; is a popular library for simplifying object mapping in .NET applications. It requires some configuration to ensure that the mapping works as expected. Missing a property might lead to a runtime exception or incorrect data. To avoid these surprises, AutoMapper has a &lt;a href="https://automapper.readthedocs.io/en/latest/Configuration-validation.html"&gt;useful method&lt;/a&gt; for verifying your mapping configuration. It checks that all the properties and constructor parameters are mapped correctly, and throws an exception if there are any issues.&lt;/p&gt;</description>
+			<guid isPermaLink="false">/posts/automapper-configuration-unit-test</guid>
+			<pubDate>Tue, 15 Aug 2023 16:03:29 GMT</pubDate>
+			<content:encoded>&lt;p&gt;&lt;a href="https://automapper.org/"&gt;AutoMapper&lt;/a&gt; is a popular library for simplifying object mapping in .NET applications. It requires some configuration to ensure that the mapping works as expected. Missing a property might lead to a runtime exception or incorrect data. To avoid these surprises, AutoMapper has a &lt;a href="https://automapper.readthedocs.io/en/latest/Configuration-validation.html"&gt;useful method&lt;/a&gt; for verifying your mapping configuration. It checks that all the properties and constructor parameters are mapped correctly, and throws an exception if there are any issues.&lt;/p&gt;
+&lt;p&gt;My favorite thing about this feature is how specific the errors are. It tells you exactly which mapping and fields have a problem. For example, this is what it looks like if I forget to configure mappings for properties &lt;code&gt;Description&lt;/code&gt; and &lt;code&gt;Comments&lt;/code&gt; and AutoMapper isn't able to figure it out based on its conventions.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-text"&gt;AutoMapper.AutoMapperConfigurationException :
+    Unmapped members were found. Review the types and members below.
+    Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+    For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+    ===============================================================================================================================
+    Item -&amp;gt; ItemDto (Destination member list)
+    DemoApp.Domain.Entities.Item -&amp;gt; DemoApp.Application.Item.Dtos.ItemDto (Destination member list)
+
+    Unmapped properties:
+    Description
+    Comments
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;In some projects I have set up this verification to run on app start. It works but the feedback loop isn’t ideal. I often end up ready to see my code working just to be interrupted by an AutoMapper exception. Placing this verification in a unit test makes this a better experience.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;[Fact]
+public void AutoMapper_Configuration_IsValid() {
+    var mapperConfig = new MapperConfiguration(m =&amp;gt; m.AddProfile&amp;lt;AutoMapperProfile&amp;gt;());
+    mapperConfig.AssertConfigurationIsValid();
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This way, I can run the test before launching the app and catch any errors early.&lt;/p&gt;
+&lt;p&gt;I hope you found this post useful. If you have any feedback or questions, please leave a comment below.&lt;/p&gt;
 </content:encoded>
 			<comments xmlns="http://purl.org/rss/1.0/modules/slash/">0</comments>
 		</item>
