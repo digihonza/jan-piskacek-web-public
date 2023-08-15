@@ -4,12 +4,12 @@
 	<title />
 	<link rel="self" href="/" />
 	<rights>© 2023 Jan Piskáček</rights>
-	<updated>2023-08-15T16:33:49Z</updated>
+	<updated>2023-08-15T16:43:09Z</updated>
 	<entry>
 		<id>/posts/automapper-configuration-unit-test</id>
 		<title>How to Verify AutoMapper Configuration Using a Unit Test</title>
 		<link href="/posts/automapper-configuration-unit-test" />
-		<updated>2023-08-15T16:32:55Z</updated>
+		<updated>2023-08-15T16:42:40Z</updated>
 		<content>&lt;p&gt;&lt;a href="https://automapper.org/"&gt;AutoMapper&lt;/a&gt; is a popular library for simplifying object mapping in .NET applications. It requires some configuration to ensure that the mapping works as expected. Missing a property might lead to a runtime exception or incorrect data. To avoid these surprises, AutoMapper has a &lt;a href="https://automapper.readthedocs.io/en/latest/Configuration-validation.html"&gt;useful method&lt;/a&gt; for verifying your mapping configuration. It checks that all the properties and constructor parameters are mapped correctly, and throws an exception if there are any issues.&lt;/p&gt;
 &lt;p&gt;My favorite thing about this feature is how specific the errors are. It tells you exactly which mapping and fields have a problem. For example, this is what it looks like if I forget to configure mappings for properties &lt;code&gt;Description&lt;/code&gt; and &lt;code&gt;Comments&lt;/code&gt; and AutoMapper isn't able to figure it out based on its conventions.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-text"&gt;AutoMapper.AutoMapperConfigurationException :
